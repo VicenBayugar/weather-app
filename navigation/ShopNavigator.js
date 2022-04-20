@@ -27,7 +27,11 @@ const ShopNavigator = () => {
           component={Home}
           options={{ title: "Weather App" }}
         />
-        <Stack.Screen name="Detalle" component={DetailScreen} />
+        <Stack.Screen
+          name="Detalle"
+          component={DetailScreen}
+          options={({ route }) => ({ title: route.params.title })}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

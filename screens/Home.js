@@ -10,11 +10,22 @@ const Home = ({ navigation }) => {
     { title: "París", temperatura: "18°", humedad: "75%", id: 4 },
   ];
 
+  const onSelected = (item) => {
+    navigation.navigate("Detalle", {
+      id: item.id,
+      title: item.title,
+      temperatura: item.temperatura,
+      humedad: item.humedad,
+    });
+  };
+
   return (
     <FlatList
       data={ciudades}
       keyExtractor={(item) => item.id}
-      renderItem={({ item }) => <GridItem item={item} />}
+      renderItem={({ item }) => (
+        <GridItem item={item} onSelected={onSelected} />
+      )}
       numColumns={2}
     />
   );

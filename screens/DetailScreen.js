@@ -1,10 +1,12 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 
-const DetailScreen = () => {
+const DetailScreen = ({ route }) => {
   return (
     <View style={styles.screen}>
-      <Text>Acá mostraría el clima de cada ciudad</Text>
+      <Text>{route.params.title}</Text>
+      <Text>Tempratura: {route.params.temperatura}</Text>
+      <Text>Humedad: {route.params.humedad}</Text>
     </View>
   );
 };

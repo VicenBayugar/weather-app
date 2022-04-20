@@ -1,11 +1,14 @@
 import React from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 
-const GridItem = ({ item }) => {
+const GridItem = ({ item, onSelected }) => {
   console.log(item);
   return (
     <View style={styles.gridItem}>
-      <TouchableOpacity style={styles.container}>
+      <TouchableOpacity
+        style={styles.container}
+        onPress={() => onSelected(item)}
+      >
         <View>
           <Text>{item.temperatura}</Text>
         </View>
