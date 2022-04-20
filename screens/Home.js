@@ -1,27 +1,22 @@
 import React from "react";
 import { View, Text, StyleSheet, Button, FlatList } from "react-native";
+import GridItem from "../components/GridItem";
 
 const Home = ({ navigation }) => {
   const ciudades = [
-    { nombre: "Buenos Aires", temperatura: "28°", humedad: "40%" },
-    { nombre: "Londres", temperatura: "15°", humedad: "85%" },
-    { nombre: "New York", temperatura: "22°", humedad: "54%" },
+    { title: "Buenos Aires", temperatura: "28°", humedad: "40%", id: 1 },
+    { title: "Londres", temperatura: "15°", humedad: "85%", id: 2 },
+    { title: "New York", temperatura: "22°", humedad: "54%", id: 3 },
+    { title: "París", temperatura: "18°", humedad: "75%", id: 4 },
   ];
+
   return (
-    <View style={styles.screen}>
-      <FlatList
-        data={ciudades}
-        renderItem={(data) => (
-          <View style={styles.card}>
-            <Text>{data.item.nombre}</Text>
-            <Button
-              title="Ver detalle"
-              onPress={() => navigation.navigate("Detalle")}
-            />
-          </View>
-        )}
-      />
-    </View>
+    <FlatList
+      data={ciudades}
+      keyExtractor={(item) => item.id}
+      renderItem={({ item }) => <GridItem item={item} />}
+      numColumns={2}
+    />
   );
 };
 
@@ -30,11 +25,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-  },
-  card: {
-    justifyContent: "center",
-    alignItems: "center",
-    marginVertical: 15,
   },
 });
 
