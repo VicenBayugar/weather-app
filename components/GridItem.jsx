@@ -1,5 +1,6 @@
 import React from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
+import { COLORS } from "../constants/colors";
 
 const GridItem = ({ item, onSelected }) => {
   console.log(item);
@@ -28,6 +29,7 @@ const styles = StyleSheet.create({
     height: 150,
   },
   container: {
+    backgroundColor: COLORS.accent,
     flex: 1,
     borderRadius: 6,
     shadowColor: "black",

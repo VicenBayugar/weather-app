@@ -1,13 +1,15 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
+import Item from "../components/Item";
 
 const DetailScreen = ({ route }) => {
   return (
-    <View style={styles.screen}>
-      <Text>{route.params.title}</Text>
-      <Text>Tempratura: {route.params.temperatura}</Text>
-      <Text>Humedad: {route.params.humedad}</Text>
-    </View>
+    <Item item={route.params.item} />
+    // <View style={styles.screen}>
+    //   <Text>{route.params.title}</Text>
+    //   <Text>Tempratura: {route.params.temperatura}</Text>
+    //   <Text>Humedad: {route.params.humedad}</Text>
+    // </View>
   );
 };
 

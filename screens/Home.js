@@ -12,15 +12,14 @@ const Home = ({ navigation }) => {
 
   const onSelected = (item) => {
     navigation.navigate("Detalle", {
-      id: item.id,
       title: item.title,
-      temperatura: item.temperatura,
-      humedad: item.humedad,
+      item,
     });
   };
 
   return (
     <FlatList
+      style={styles.screen}
       data={ciudades}
       keyExtractor={(item) => item.id}
       renderItem={({ item }) => (
@@ -33,9 +32,7 @@ const Home = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   screen: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+    marginTop: 20,
   },
 });
 
