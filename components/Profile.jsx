@@ -5,7 +5,8 @@ const Profile = () => {
   return (
     <View style={styles.container}>
       <Text>Acá irían los datos del usuario</Text>
-      <Text>y sus ciudades "favoritas"</Text>
+      <Text>su foto de perfil</Text>
+      <Text>sus ciudades "favoritas"</Text>
     </View>
   );
 };
