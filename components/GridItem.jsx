@@ -3,7 +3,6 @@ import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { COLORS } from "../constants/colors";
 
 const GridItem = ({ item, onSelected }) => {
-  console.log(item);
   return (
     <View style={styles.gridItem}>
       <TouchableOpacity
