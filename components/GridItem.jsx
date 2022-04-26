@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
   gridItem: {
     flex: 1,
     borderRadius: 6,
-    margin: 15,
+    margin: 10,
     height: 150,
   },
   container: {
@@ -39,6 +39,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     padding: 15,
+    width: 150,
   },
   // title: {
   //   fontFamily: "open-sans-bold",

@@ -26,9 +26,16 @@ const styles = StyleSheet.create({
   },
   item: {
     padding: 50,
-    borderRadius: 3,
+    borderRadius: 6,
     backgroundColor: COLORS.accent,
     textAlign: "center",
+    shadowColor: "black",
+    shadowOpacity: 0.26,
+    shadowOffset: { width: 0, height: 2 },
+    shadowRadius: 6,
+    elevation: 3,
+    justifyContent: "center",
+    alignItems: "center",
   },
   title: {
     fontSize: 20,

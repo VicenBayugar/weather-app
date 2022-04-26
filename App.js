@@ -2,6 +2,9 @@ import { StyleSheet } from "react-native";
 import { useFonts } from "expo-font";
 import AppLoading from "expo-app-loading";
 import TabNavigator from "./navigation/TabNavigator";
+import React from "react";
+import { Provider } from "react-redux";
+import store from "./store";
 
 export default function App() {
   const [loaded] = useFonts({
@@ -9,14 +12,10 @@ export default function App() {
     OpenSansBold: require("./assets/fonts/OpenSans-Bold.ttf"),
   });
   if (!loaded) return <AppLoading />;
-  return <TabNavigator />;
-}
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
+  return (
+    <Provider store={store}>
+      <TabNavigator />
+    </Provider>
+  );
+}
