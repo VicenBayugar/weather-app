@@ -5,6 +5,7 @@ import HomeNavigator from "./HomeNavigator";
 import ProfileNavigator from "./ProfileNavigator";
 import { NavigationContainer } from "@react-navigation/native";
 import { Ionicons, FontAwesome } from "@expo/vector-icons";
+import { COLORS } from "../constants/colors";
 
 const BottomTabs = createBottomTabNavigator();
 
@@ -25,7 +26,7 @@ const TabNavigator = () => {
           options={{
             tabBarIcon: ({ focused }) => (
               <View style={styles.item}>
-                <Ionicons name="md-home" size={30} color="black" />
+                <Ionicons name="md-home" size={25} color="black" />
               </View>
             ),
           }}
@@ -36,7 +37,7 @@ const TabNavigator = () => {
           options={{
             tabBarIcon: ({ focused }) => (
               <View style={styles.item}>
-                <FontAwesome name="user" size={30} color="black" />
+                <FontAwesome name="user" size={25} color="black" />
               </View>
             ),
           }}
@@ -52,13 +53,9 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 3 },
     shadowOpacity: 0.25,
     shadowRadius: 0.25,
-    elevation: 5,
     position: "absolute",
-    // bottom: 13,
-    // left: 20,
-    // right: 20,
-    borderRadius: 15,
-    height: 70,
+    height: 60,
+    backgroundColor: COLORS.primary,
   },
   item: {
     flex: 1,

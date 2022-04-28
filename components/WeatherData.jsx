@@ -1,5 +1,6 @@
 import React from "react";
 import { ScrollView, View, Text, StyleSheet, Image } from "react-native";
+import { withSafeAreaInsets } from "react-native-safe-area-context";
 
 const WeatherData = ({ data }) => {
   const fahrenheit = (data.main.temp * 1.8 - 459.67).toFixed(2);
@@ -53,6 +54,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   title: {
+    color: "white",
     fontSize: 24,
     fontWeight: "bold",
     textAlign: "center",
@@ -63,6 +65,8 @@ const styles = StyleSheet.create({
     borderColor: "#ddd",
     padding: 15,
     marginBottom: 10,
+    marginHorizontal: 10,
+    borderRadius: 6,
     alignItems: "center",
   },
   boxLabel: {
@@ -70,10 +74,12 @@ const styles = StyleSheet.create({
     fontSize: 12,
     letterSpacing: 1,
     marginBottom: 5,
+    color: "white",
   },
   boxText: {
     fontSize: 16,
     fontWeight: "bold",
+    color: "white",
   },
   image: {
     width: 50,

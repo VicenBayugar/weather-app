@@ -13,6 +13,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getWeather } from "../store/actions/weatherActions";
 import Form from "../components/Form";
 import Weather from "../components/Weather";
+import { COLORS } from "../constants/colors";
 
 const Home = ({ navigation }) => {
   const [search, setSearch] = useState("");
@@ -84,7 +85,8 @@ const Home = ({ navigation }) => {
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
-    paddingBottom: 70,
+    paddingBottom: 60,
+    backgroundColor: COLORS.accent,
   },
 });
 
