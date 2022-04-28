@@ -5,7 +5,7 @@ const Weather = ({ loading, data, error }) => {
   if (error) {
     return (
       <View style={styles.container}>
-        <Text style={styles.error}>{error}</Text>
+        <Text style={styles.error}>{error.toUpperCase()}</Text>
       </View>
     );
   }
@@ -28,7 +28,6 @@ const Weather = ({ loading, data, error }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingVertical: 20,
   },
   error: {
     color: "red",

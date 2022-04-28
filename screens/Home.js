@@ -6,6 +6,7 @@ import {
   Alert,
   TouchableWithoutFeedback,
   Keyboard,
+  ScrollView,
 } from "react-native";
 import GridItem from "../components/GridItem";
 import { useDispatch, useSelector } from "react-redux";
@@ -54,13 +55,14 @@ const Home = ({ navigation }) => {
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <View style={styles.screen}>
-        <Form
-          search={search}
-          onSetSearch={setSearch}
-          onSubmit={searchSubmitHandler}
-        />
-        <Weather loading={loading} data={data} error={error} />
-        {/* Este componente lo voy a renderizar en otro Tab del 
+        <ScrollView>
+          <Form
+            search={search}
+            onSetSearch={setSearch}
+            onSubmit={searchSubmitHandler}
+          />
+          <Weather loading={loading} data={data} error={error} />
+          {/* Este componente lo voy a renderizar en otro Tab del 
             TabNavigation que va a ser "Favoritos"
          <View>
           <Text style={styles.favoritos}>Favourites</Text>
@@ -73,6 +75,7 @@ const Home = ({ navigation }) => {
           )}
           numColumns={2}
         /> */}
+        </ScrollView>
       </View>
     </TouchableWithoutFeedback>
   );
@@ -80,13 +83,8 @@ const Home = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   screen: {
-    marginTop: 20,
-  },
-  favoritos: {
-    textAlign: "center",
-    fontSize: 18,
-    fontWeight: "bold",
-    marginBottom: 10,
+    flex: 1,
+    paddingBottom: 70,
   },
 });
 
