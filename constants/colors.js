@@ -1,4 +1,4 @@
 export const COLORS = {
-  primary: "#D7F5FF",
+  primary: "#001B28",
   accent: "#00465F",
 };

@@ -26,7 +26,7 @@ const TabNavigator = () => {
           options={{
             tabBarIcon: ({ focused }) => (
               <View style={styles.item}>
-                <Ionicons name="md-home" size={25} color="black" />
+                <Ionicons name="md-home" size={25} color="white" />
               </View>
             ),
           }}
@@ -37,7 +37,7 @@ const TabNavigator = () => {
           options={{
             tabBarIcon: ({ focused }) => (
               <View style={styles.item}>
-                <FontAwesome name="user" size={25} color="black" />
+                <FontAwesome name="user" size={25} color="white" />
               </View>
             ),
           }}

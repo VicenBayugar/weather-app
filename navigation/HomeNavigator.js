@@ -14,7 +14,7 @@ const HomeNavigator = () => {
         headerStyle: {
           backgroundColor: COLORS.primary,
         },
-        headerTintColor: COLORS.accent,
+        headerTintColor: "#F2F2F2",
         headerTitleStyle: {
           fontWeight: "bold",
         },
