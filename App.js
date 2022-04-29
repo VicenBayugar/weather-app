@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, StatusBar } from "react-native";
 import { useFonts } from "expo-font";
 import AppLoading from "expo-app-loading";
 import TabNavigator from "./navigation/TabNavigator";
@@ -15,6 +15,7 @@ export default function App() {
 
   return (
     <Provider store={store}>
+      <StatusBar animated={true} barStyle={"light-content"} />
       <TabNavigator />
     </Provider>
   );

@@ -30,8 +30,8 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   error: {
-    color: "red",
-    fontSize: 20,
+    color: "#00d1b2",
+    fontSize: 18,
     textAlign: "center",
   },
 });

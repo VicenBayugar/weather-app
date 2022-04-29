@@ -18,6 +18,7 @@ const HomeNavigator = () => {
         headerTitleStyle: {
           fontWeight: "bold",
         },
+        headerTitleAlign: "center",
       }}
     >
       <Stack.Screen

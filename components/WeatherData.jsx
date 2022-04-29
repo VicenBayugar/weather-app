@@ -1,14 +1,13 @@
 import React from "react";
-import { ScrollView, View, Text, StyleSheet, Image } from "react-native";
-import { withSafeAreaInsets } from "react-native-safe-area-context";
+import { View, Text, StyleSheet, Image } from "react-native";
 
 const WeatherData = ({ data }) => {
-  const fahrenheit = (data.main.temp * 1.8 - 459.67).toFixed(2);
   const celsius = (data.main.temp - 273.15).toFixed(2);
+  const min = (data.main.temp_min - 273.15).toFixed(2);
+  const max = (data.main.temp_max - 273.15).toFixed(2);
 
   return (
     <View style={styles.container} onStartShouldSetResponder={() => true}>
-      {/* <ScrollView style={styles.containerInner}> */}
       <Text style={styles.title}>
         {data.name} - {data.sys.country}
       </Text>
@@ -22,11 +21,15 @@ const WeatherData = ({ data }) => {
         />
       </View>
       <View style={styles.box}>
-        <Text style={styles.boxLabel}>Temp</Text>
         <View style={styles.tempContainer}>
-          <Text style={styles.boxText}>{data.main.temp}K</Text>
-          <Text style={styles.boxText}>{fahrenheit}&#8457;</Text>
+          <Text style={styles.boxLabel}>Min</Text>
+          <Text style={styles.boxLabel}>Temp</Text>
+          <Text style={styles.boxLabel}>Max</Text>
+        </View>
+        <View style={styles.tempContainer}>
+          <Text style={styles.boxText}>{min}&#8451;</Text>
           <Text style={styles.boxText}>{celsius}&#8451;</Text>
+          <Text style={styles.boxText}>{max}&#8451;</Text>
         </View>
       </View>
       <View style={styles.box}>
@@ -41,7 +44,6 @@ const WeatherData = ({ data }) => {
         <Text style={styles.boxLabel}>Wind</Text>
         <Text style={styles.boxText}>{data.wind.speed} m/s</Text>
       </View>
-      {/* </ScrollView> */}
     </View>
   );
 };
