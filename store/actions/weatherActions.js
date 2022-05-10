@@ -14,6 +14,7 @@ export const getWeather = (city, onSuccess = () => {}, onError = () => {}) => {
       }
 
       const resData = await res.json();
+      console.log("Llamando api");
       dispatch({
         type: GET_WEATHER,
         payload: resData,

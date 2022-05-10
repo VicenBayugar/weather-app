@@ -63,13 +63,12 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   box: {
-    borderWidth: 1,
-    borderColor: "#ddd",
     padding: 15,
     marginBottom: 10,
     marginHorizontal: 10,
     borderRadius: 6,
     alignItems: "center",
+    backgroundColor: "#219ebc",
   },
   boxLabel: {
     textTransform: "uppercase",

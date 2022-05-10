@@ -1,6 +1,6 @@
 import React from "react";
 import Home from "../screens/Home";
-import DetailScreen from "../screens/DetailScreen";
+import MapScreen from "../screens/MapScreen";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { COLORS } from "../constants/colors";
 
@@ -27,9 +27,9 @@ const HomeNavigator = () => {
         options={{ title: "Weather App" }}
       />
       <Stack.Screen
-        name="Detalle"
-        component={DetailScreen}
-        options={({ route }) => ({ title: route.params.title })}
+        name="Map"
+        component={MapScreen}
+        options={{ title: "Map" }}
       />
     </Stack.Navigator>
   );

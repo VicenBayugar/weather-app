@@ -1,11 +1,16 @@
+import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import { View, Text, StyleSheet, TextInput, Button } from "react-native";
 
 const Form = ({ search, onSetSearch, onSubmit }) => {
+  const navigation = useNavigation();
+  const navigateMap = () => {
+    navigation.navigate("Map");
+  };
   return (
     <View style={styles.container}>
       <Text style={styles.heading}>
-        Enter city name and press search button
+        Search by city name or use your location
       </Text>
       <View>
         <TextInput
@@ -14,7 +19,12 @@ const Form = ({ search, onSetSearch, onSubmit }) => {
           value={search}
           onChangeText={(val) => onSetSearch(val)}
         />
-        <Button title="Search" onPress={onSubmit} />
+        <View>
+          <Button title="Search" color="#219ebc" onPress={onSubmit} />
+        </View>
+        <View style={styles.button}>
+          <Button title="My Location" color="#3e5c76" onPress={navigateMap} />
+        </View>
       </View>
     </View>
   );
@@ -42,6 +52,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     fontSize: 16,
     marginBottom: 10,
+  },
+  button: {
+    marginTop: 10,
   },
 });
 
