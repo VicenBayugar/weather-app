@@ -1,10 +1,18 @@
-import { StyleSheet, StatusBar } from "react-native";
+import { StatusBar } from "react-native";
 import { useFonts } from "expo-font";
 import AppLoading from "expo-app-loading";
 import TabNavigator from "./navigation/TabNavigator";
 import React from "react";
 import { Provider } from "react-redux";
 import store from "./store";
+import { init } from "./db";
+
+init()
+  .then(() => console.log('Database initialized'))
+  .catch((err) => {
+    console.log('Database fail connect')
+    console.log(err.message);
+  })
 
 export default function App() {
   const [loaded] = useFonts({

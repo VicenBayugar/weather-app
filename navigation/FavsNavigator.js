@@ -1,15 +1,14 @@
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { COLORS } from "../constants/colors";
-import { Platform } from "react-native";
 import Profile from "../components/Profile";
 
 const Stack = createNativeStackNavigator();
 
-const ProfileNavigator = () => {
+const FavsNavigator = () => {
   return (
     <Stack.Navigator
-      initialRouteName="Profile"
+      initialRouteName="Favourites"
       screenOptions={{
         headerStyle: {
           backgroundColor: COLORS.primary,
@@ -22,12 +21,12 @@ const ProfileNavigator = () => {
       }}
     >
       <Stack.Screen
-        name="Profile"
+        name="Favourites"
         component={Profile}
-        options={{ title: "Profile" }}
+        options={{ title: "Favourites" }}
       />
     </Stack.Navigator>
   );
 };
 
-export default ProfileNavigator;
+export default FavsNavigator;

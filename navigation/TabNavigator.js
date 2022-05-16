@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, View, Text } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import HomeNavigator from "./HomeNavigator";
-import ProfileNavigator from "./ProfileNavigator";
+import FavsNavigator from "./FavsNavigator";
 import { NavigationContainer } from "@react-navigation/native";
 import { Ionicons, FontAwesome } from "@expo/vector-icons";
 import { COLORS } from "../constants/colors";
@@ -32,8 +32,8 @@ const TabNavigator = () => {
           }}
         />
         <BottomTabs.Screen
-          name="ProfileTab"
-          component={ProfileNavigator}
+          name="FavTab"
+          component={FavsNavigator}
           options={{
             tabBarIcon: ({ focused }) => (
               <View style={styles.item}>

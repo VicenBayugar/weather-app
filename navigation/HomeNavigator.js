@@ -4,6 +4,7 @@ import MapScreen from "../screens/MapScreen";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { COLORS } from "../constants/colors";
 
+
 const Stack = createNativeStackNavigator();
 
 const HomeNavigator = () => {

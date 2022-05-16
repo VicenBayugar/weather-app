@@ -5,11 +5,9 @@ import MapPreview from "./MapPreview";
 import { COLORS } from "../constants/colors";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigation } from "@react-navigation/native";
-import { addLocation } from "../store/actions/locationActions";
-import { getWeather } from "../store/actions/weatherActions";
+import { getWeatherByCoord } from "../store/actions/weatherActions";
 
 const Map = () => {
-  const { location } = useSelector((state) => state.ciudad);
   const dispatch = useDispatch();
   const navigation = useNavigation();
   const [pickedLocation, setPicketLocation] = useState();
@@ -29,8 +27,7 @@ const Map = () => {
   };
 
   const sendLocation = () => {
-    dispatch(addLocation(pickedLocation));
-    dispatch(getWeather(location));
+    dispatch(getWeatherByCoord(pickedLocation.lat, pickedLocation.lng));
     navigation.navigate("Home");
   };
 

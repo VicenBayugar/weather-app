@@ -1,16 +1,28 @@
 import React from "react";
-import { View, Text, StyleSheet, Image } from "react-native";
+import { insertCity } from "../db/index"
+import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 
 const WeatherData = ({ data }) => {
   const celsius = (data.main.temp - 273.15).toFixed(2);
   const min = (data.main.temp_min - 273.15).toFixed(2);
   const max = (data.main.temp_max - 273.15).toFixed(2);
 
+  
+  const favorito = async () => {
+     const result = await insertCity(data.name)
+     console.log(result);
+  }
+
   return (
     <View style={styles.container} onStartShouldSetResponder={() => true}>
+      <View style={styles.header}>
       <Text style={styles.title}>
         {data.name} - {data.sys.country}
       </Text>
+      <TouchableOpacity onPress={favorito}>
+        <Text style={styles.title}>Fav</Text>
+      </TouchableOpacity>
+      </View>
       <View style={styles.box}>
         <Text style={styles.boxLabel}>{data.weather[0].description}</Text>
         <Image
@@ -54,6 +66,12 @@ const styles = StyleSheet.create({
   },
   containerInner: {
     paddingHorizontal: 20,
+  },
+  header: {
+    flex: 1,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-evenly"
   },
   title: {
     color: "white",

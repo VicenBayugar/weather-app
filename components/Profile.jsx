@@ -1,13 +1,29 @@
-import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import React, {useLayoutEffect, useEffect} from "react";
+import { View, StyleSheet, FlatList } from "react-native";
 import { COLORS } from "../constants/colors";
+import { useSelector, useDispatch } from "react-redux";
+import {loadCities} from "../store/actions/weatherActions"
+import GridItem from "./GridItem";
 
-const Profile = () => {
+const Favoritos = () => {
+  const dispatch = useDispatch()
+  const { favs } = useSelector((state) => state.weather);
+  useEffect(() => {
+    dispatch(loadCities())
+  }, [])
+
+  console.log(favs);
+
   return (
     <View style={styles.container}>
-      <Text style={styles.texto}>Acá irían los datos del usuario</Text>
-      <Text style={styles.texto}>su foto de perfil</Text>
-      <Text style={styles.texto}>sus ciudades "favoritas"</Text>
+      <FlatList
+          data={favs}
+          keyExtractor={(item) => item.id}
+          renderItem={({ item }) => (
+            <GridItem item={item} />
+          )}
+          numColumns={1}
+        />
     </View>
   );
 };
@@ -25,4 +41,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Profile;
+export default Favoritos;

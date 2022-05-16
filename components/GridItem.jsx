@@ -1,19 +1,15 @@
 import React from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
-import { COLORS } from "../constants/colors";
 
-const GridItem = ({ item, onSelected }) => {
+const GridItem = ({ item }) => {
   return (
     <View style={styles.gridItem}>
       <TouchableOpacity
         style={styles.container}
-        onPress={() => onSelected(item)}
+        // onPress={() => onSelected(item)}
       >
         <View>
-          <Text>{item.temperatura}</Text>
-        </View>
-        <View>
-          <Text>{item.title}</Text>
+          <Text style={styles.texto}>{item.title}</Text>
         </View>
       </TouchableOpacity>
     </View>
@@ -24,11 +20,13 @@ const styles = StyleSheet.create({
   gridItem: {
     flex: 1,
     borderRadius: 6,
-    margin: 10,
+    marginTop: 20,
     height: 150,
+    alignItems: "center",
+    justifyContent: "center"
   },
   container: {
-    backgroundColor: COLORS.accent,
+    backgroundColor: "#219ebc",
     flex: 1,
     borderRadius: 6,
     shadowColor: "black",
@@ -39,11 +37,13 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     padding: 15,
-    width: 150,
+    width: 200,
   },
-  // title: {
-  //   fontFamily: "open-sans-bold",
-  // },
+  texto: {
+    fontSize: 18,
+    color: "white",
+    textTransform: 'uppercase'
+  },
 });
 
 export default GridItem;
