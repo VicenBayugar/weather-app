@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, StyleSheet, Alert, TouchableOpacity } from "react-native";
+import { View, Text, StyleSheet, Alert, TouchableOpacity, ImageBackground } from "react-native";
 import * as Location from "expo-location";
 import MapPreview from "./MapPreview";
 import { COLORS } from "../constants/colors";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useNavigation } from "@react-navigation/native";
 import { getWeatherByCoord } from "../store/actions/weatherActions";
+import fondo from "../assets/fondo.jpg"
 
 const Map = () => {
   const dispatch = useDispatch();
@@ -60,9 +61,11 @@ const Map = () => {
             location={pickedLocation}
             style={styles.preview}
           ></MapPreview>
-        </>
+         </>        
       ) : (
+        <ImageBackground source={fondo} resizeMode="cover" style={styles.image} blurRadius={3}>
         <Text style={styles.texto}>Esperando ubicación...</Text>
+        </ImageBackground>
       )}
     </View>
   );
@@ -82,6 +85,7 @@ const styles = StyleSheet.create({
   texto: {
     fontSize: 18,
     color: "white",
+    textAlign: "center"
   },
   boton: {
     width: "100%",
@@ -92,6 +96,11 @@ const styles = StyleSheet.create({
     color: "white",
     textAlign: "center",
     fontSize: 18,
+  },
+  image: {
+    flex: 1,
+    justifyContent: "center",
+    width: "100%"
   },
 });
 

@@ -1,29 +1,31 @@
-import React, {useLayoutEffect, useEffect} from "react";
-import { View, StyleSheet, FlatList } from "react-native";
+import React, {useEffect} from "react";
+import { View, StyleSheet, FlatList, ImageBackground} from "react-native";
 import { COLORS } from "../constants/colors";
 import { useSelector, useDispatch } from "react-redux";
 import {loadCities} from "../store/actions/weatherActions"
 import GridItem from "./GridItem";
+import fondo from "../assets/fondo.jpg"
 
-const Favoritos = () => {
+const Favourites = () => {
   const dispatch = useDispatch()
   const { favs } = useSelector((state) => state.weather);
   useEffect(() => {
     dispatch(loadCities())
   }, [])
 
-  console.log(favs);
-
   return (
     <View style={styles.container}>
+      <ImageBackground source={fondo} resizeMode="cover" style={styles.image} blurRadius={3}>
       <FlatList
+          style={styles.flat}
+          numColumns={1}
           data={favs}
           keyExtractor={(item) => item.id}
           renderItem={({ item }) => (
             <GridItem item={item} />
           )}
-          numColumns={1}
-        />
+        />       
+      </ImageBackground>
     </View>
   );
 };
@@ -35,10 +37,14 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: COLORS.accent,
   },
-  texto: {
-    fontSize: 18,
-    color: "white",
+  flat:{
+    marginTop: 30
+  },
+  image: {
+    flex: 1,
+    justifyContent: "center",
+    width: "100%"
   },
 });
 
-export default Favoritos;
+export default Favourites;

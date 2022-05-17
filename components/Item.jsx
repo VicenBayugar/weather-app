@@ -1,19 +1,37 @@
-import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import React, {useEffect, useState} from "react";
+import { View, ScrollView, StyleSheet, ImageBackground } from "react-native";
 import { COLORS } from "../constants/colors";
+import fondo from "../assets/fondo.jpg"
+import { useDispatch, useSelector } from "react-redux";
+import { getWeather } from "../store/actions/weatherActions";
+import Weather from "./Weather"
 
-const Item = ({ item }) => {
+const Item = ({ route }) => {
+  const title = route.params.title
+  const dispatch = useDispatch();
+  const [loading, setLoading] = useState(false);
+  const { data, error } = useSelector((state) => state.weather);
+
+  useEffect(() => {
+    setLoading(true);
+    dispatch(
+      getWeather(
+        title,
+        () => setLoading(false),
+        () => setLoading(false)
+      )
+    );  
+  }, [])
+  
   return (
     <View style={styles.screen}>
-      <View style={styles.item}>
-        <View>
-          <Text style={styles.title}>{item.title}</Text>
+      <ImageBackground source={fondo} resizeMode="cover" style={styles.image} blurRadius={3}>
+      <ScrollView> 
+        <View style={styles.container}>       
+          <Weather loading={loading} data={data} error={error} />
         </View>
-        <View>
-          <Text style={styles.details}>Temperatura: {item.temperatura}</Text>
-          <Text style={styles.details}>Humedad: {item.humedad}</Text>
-        </View>
-      </View>
+      </ScrollView>
+      </ImageBackground>
     </View>
   );
 };
@@ -24,27 +42,18 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  item: {
-    padding: 50,
-    borderRadius: 6,
-    backgroundColor: COLORS.accent,
-    textAlign: "center",
-    shadowColor: "black",
-    shadowOpacity: 0.26,
-    shadowOffset: { width: 0, height: 2 },
-    shadowRadius: 6,
-    elevation: 3,
-    justifyContent: "center",
-    alignItems: "center",
+  container: {
+    marginTop: 40
   },
   title: {
     fontSize: 20,
     textAlign: "center",
     fontWeight: "bold",
   },
-  details: {
-    fontSize: 18,
-    textAlign: "center",
+  image: {
+    flex: 1,
+    justifyContent: "center",
+    width: "100%"
   },
 });
 

@@ -1,6 +1,8 @@
 import React from "react";
 import { insertCity } from "../db/index"
 import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
+import { COLORS } from "../constants/colors";
+import { FontAwesome   } from "@expo/vector-icons";
 
 const WeatherData = ({ data }) => {
   const celsius = (data.main.temp - 273.15).toFixed(2);
@@ -20,7 +22,7 @@ const WeatherData = ({ data }) => {
         {data.name} - {data.sys.country}
       </Text>
       <TouchableOpacity onPress={favorito}>
-        <Text style={styles.title}>Fav</Text>
+        <FontAwesome style={styles.title} name="star-o" size={25} color="white" />
       </TouchableOpacity>
       </View>
       <View style={styles.box}>
@@ -79,6 +81,9 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     textAlign: "center",
     marginBottom: 20,
+    textShadowColor: 'rgba(0, 0, 0, 0.75)',
+    textShadowOffset: {width: -1, height: 1},
+    textShadowRadius: 10
   },
   box: {
     padding: 15,
@@ -86,17 +91,25 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
     borderRadius: 6,
     alignItems: "center",
-    backgroundColor: "#219ebc",
+    backgroundColor: COLORS.accent,
+    shadowColor: "#000",
+    shadowOffset: {
+    	width: 0,
+    	height: 5,
+    },
+    shadowOpacity: 0.34,
+    shadowRadius: 6.27,
+    elevation: 10,
   },
   boxLabel: {
     textTransform: "uppercase",
-    fontSize: 12,
+    fontSize: 14,
     letterSpacing: 1,
     marginBottom: 5,
     color: "white",
   },
   boxText: {
-    fontSize: 16,
+    fontSize: 17,
     fontWeight: "bold",
     color: "white",
   },

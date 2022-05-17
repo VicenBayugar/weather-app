@@ -6,12 +6,14 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
   ScrollView,
+  ImageBackground
 } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { getWeather } from "../store/actions/weatherActions";
 import Form from "../components/Form";
 import Weather from "../components/Weather";
 import { COLORS } from "../constants/colors";
+import fondo from "../assets/fondo.jpg"
 
 const Home = () => {
   const [search, setSearch] = useState("");
@@ -37,16 +39,10 @@ const Home = () => {
     Keyboard.dismiss();
   };
 
-  // const onSelected = (item) => {
-  //   navigation.navigate("Detalle", {
-  //     title: item.title,
-  //     item,
-  //   });
-  // };
-
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <View style={styles.screen}>
+        <ImageBackground source={fondo} resizeMode="cover" style={styles.image} blurRadius={3}>
         <ScrollView>
           <Form
             search={search}
@@ -54,20 +50,8 @@ const Home = () => {
             onSubmit={searchSubmitHandler}
           />
           <Weather loading={loading} data={data} error={error} />
-          {/* Este componente lo voy a renderizar en otro Tab del 
-            TabNavigation que va a ser "Favoritos"
-         <View>
-          <Text style={styles.favoritos}>Favourites</Text>
-        </View>
-        <FlatList
-          data={ciudades}
-          keyExtractor={(item) => item.id}
-          renderItem={({ item }) => (
-            <GridItem item={item} onSelected={onSelected} />
-          )}
-          numColumns={2}
-        /> */}
         </ScrollView>
+        </ImageBackground>
       </View>
     </TouchableWithoutFeedback>
   );
@@ -78,6 +62,10 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingBottom: 60,
     backgroundColor: COLORS.accent,
+  },
+  image: {
+    flex: 1,
+    justifyContent: "center"
   },
 });
 

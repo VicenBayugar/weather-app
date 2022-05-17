@@ -1,7 +1,8 @@
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { COLORS } from "../constants/colors";
-import Profile from "../components/Profile";
+import Favourites from "../components/Favourites";
+import Item from "../components/Item"
 
 const Stack = createNativeStackNavigator();
 
@@ -22,8 +23,13 @@ const FavsNavigator = () => {
     >
       <Stack.Screen
         name="Favourites"
-        component={Profile}
+        component={Favourites}
         options={{ title: "Favourites" }}
+      />
+      <Stack.Screen
+        name="Detalle"
+        component={Item}
+        options={{ title: "Favourite" }}
       />
     </Stack.Navigator>
   );
