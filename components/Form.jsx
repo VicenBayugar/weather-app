@@ -1,29 +1,46 @@
 import { useNavigation } from "@react-navigation/native";
 import React from "react";
-import { View, Text, StyleSheet, TextInput, Button } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  TextInput,
+  Button,
+  TouchableOpacity,
+} from "react-native";
 
 const Form = ({ search, onSetSearch, onSubmit }) => {
   const navigation = useNavigation();
+
   const navigateMap = () => {
     navigation.navigate("Map");
   };
+
+  const handlePickOnMap = async () => {
+    navigation.navigate("ChooseLocation");
+  };
+
   return (
     <View style={styles.container}>
-      <Text style={styles.heading}>
-        Search by city name or use your location
-      </Text>
+      <Text style={styles.heading}>Search by city name or by location</Text>
       <View>
         <TextInput
           style={styles.input}
           placeholder="Enter city name..."
+          placeholderTextColor={"#848484"}
           value={search}
           onChangeText={(val) => onSetSearch(val)}
         />
-        <View style={styles.buttonContainer}>
-          <Button title="Search" color="#219ebc" onPress={onSubmit} />
-        </View>
+        <TouchableOpacity style={styles.buttonContainer} onPress={onSubmit}>
+          <Text style={styles.text}>Search</Text>
+        </TouchableOpacity>
         <View style={styles.button}>
-          <Button title="My Location" color="#3e5c76" onPress={navigateMap} />
+          <TouchableOpacity style={styles.boton} onPress={navigateMap}>
+            <Text style={styles.text}>My Location</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.boton2} onPress={handlePickOnMap}>
+            <Text style={styles.text}>Choose Location</Text>
+          </TouchableOpacity>
         </View>
       </View>
     </View>
@@ -41,9 +58,9 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: "center",
     marginBottom: 20,
-    textShadowColor: 'rgba(0, 0, 0, 0.75)',
-    textShadowOffset: {width: -1, height: 1},
-    textShadowRadius: 10
+    textShadowColor: "rgba(0, 0, 0, 0.75)",
+    textShadowOffset: { width: -1, height: 1 },
+    textShadowRadius: 10,
   },
   input: {
     borderWidth: 1,
@@ -57,33 +74,87 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     shadowColor: "#000",
     shadowOffset: {
-  	  width: 0,
-  	  height: 5,
+      width: 0,
+      height: 5,
     },
     shadowOpacity: 0.34,
     shadowRadius: 6.27,
     elevation: 10,
   },
-  buttonContainer:{
+  buttonContainer: {
     shadowColor: "#000",
     shadowOffset: {
-    	width: 0,
-    	height: 5,
+      width: 0,
+      height: 5,
+    },
+    shadowOpacity: 0.34,
+    shadowRadius: 6.27,
+    elevation: 10,
+    backgroundColor: "#219ebc",
+    height: 35,
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 4,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 5,
     },
     shadowOpacity: 0.34,
     shadowRadius: 6.27,
     elevation: 10,
   },
   button: {
+    flex: 1,
+    flexDirection: "row",
     marginTop: 10,
     shadowColor: "#000",
     shadowOffset: {
-    	width: 0,
-    	height: 5,
+      width: 0,
+      height: 5,
     },
     shadowOpacity: 0.34,
     shadowRadius: 6.27,
     elevation: 10,
+  },
+  boton: {
+    flex: 1,
+    marginRight: 2,
+    backgroundColor: "#3e5c76",
+    height: 35,
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 4,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 5,
+    },
+    shadowOpacity: 0.34,
+    shadowRadius: 6.27,
+    elevation: 10,
+  },
+  boton2: {
+    flex: 1,
+    marginLeft: 2,
+    backgroundColor: "#3e5c76",
+    height: 35,
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 4,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 5,
+    },
+    shadowOpacity: 0.34,
+    shadowRadius: 6.27,
+    elevation: 10,
+  },
+  text: {
+    textAlign: "center",
+    color: "white",
+    fontSize: 15,
   },
 });
 

@@ -1,6 +1,6 @@
-import { GET_WEATHER, SET_ERROR, LOAD_CITIES } from "../types";
+import { GET_WEATHER, SET_ERROR, LOAD_CITIES, DELETE_CITY } from "../types";
 import { API_WEATHER } from "../../constants/apiWeather";
-import { fetchCity } from "../../db";
+import { deleteCity, fetchCity } from "../../db";
 
 export const getWeather = (city, onSuccess = () => {}, onError = () => {}) => {
   return async (dispatch) => {
@@ -66,6 +66,17 @@ export const loadCities = () => {
     try {
       const result = await fetchCity()
       dispatch({type: LOAD_CITIES, favs: result.rows._array})
+    } catch (error) {
+      throw error
+    }
+  }
+}
+
+export const deleteCities = (id) => {
+  return async dispatch => {
+    try {
+      const result = await deleteCity(id)
+      dispatch({type: DELETE_CITY, id})
     } catch (error) {
       throw error
     }

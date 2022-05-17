@@ -1,29 +1,60 @@
 import React from "react";
-import { insertCity } from "../db/index"
-import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
+import { insertCity } from "../db/index";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  TouchableOpacity,
+  Alert,
+} from "react-native";
 import { COLORS } from "../constants/colors";
-import { FontAwesome   } from "@expo/vector-icons";
+import { FontAwesome } from "@expo/vector-icons";
+import { useDispatch } from "react-redux";
+import { loadCities } from "../store/actions/weatherActions";
 
 const WeatherData = ({ data }) => {
+  const dispatch = useDispatch();
   const celsius = (data.main.temp - 273.15).toFixed(2);
   const min = (data.main.temp_min - 273.15).toFixed(2);
   const max = (data.main.temp_max - 273.15).toFixed(2);
 
-  
-  const favorito = async () => {
-     const result = await insertCity(data.name)
-     console.log(result);
-  }
+  const favorito = () => {
+    Alert.alert(
+      "Add to favourites",
+      "Do you want to add this city to favourites?",
+      [
+        {
+          text: "NO",
+          style: "cancel",
+        },
+        {
+          text: "YES",
+          onPress: () => agregarFav(),
+        },
+      ]
+    );
+  };
+
+  const agregarFav = async () => {
+    const result = await insertCity(data.name);
+    dispatch(loadCities());
+  };
 
   return (
     <View style={styles.container} onStartShouldSetResponder={() => true}>
       <View style={styles.header}>
-      <Text style={styles.title}>
-        {data.name} - {data.sys.country}
-      </Text>
-      <TouchableOpacity onPress={favorito}>
-        <FontAwesome style={styles.title} name="star-o" size={25} color="white" />
-      </TouchableOpacity>
+        <Text style={styles.title}>
+          {data.name} - {data.sys.country}
+        </Text>
+        <TouchableOpacity onPress={favorito} style={styles.star}>
+          <FontAwesome
+            style={styles.title}
+            name="star-o"
+            size={25}
+            color="white"
+          />
+        </TouchableOpacity>
       </View>
       <View style={styles.box}>
         <Text style={styles.boxLabel}>{data.weather[0].description}</Text>
@@ -73,7 +104,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "space-evenly"
+    justifyContent: "center",
   },
   title: {
     color: "white",
@@ -81,9 +112,12 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     textAlign: "center",
     marginBottom: 20,
-    textShadowColor: 'rgba(0, 0, 0, 0.75)',
-    textShadowOffset: {width: -1, height: 1},
-    textShadowRadius: 10
+    textShadowColor: "rgba(0, 0, 0, 0.75)",
+    textShadowOffset: { width: -1, height: 1 },
+    textShadowRadius: 10,
+  },
+  star: {
+    paddingLeft: 25,
   },
   box: {
     padding: 15,
@@ -94,8 +128,8 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.accent,
     shadowColor: "#000",
     shadowOffset: {
-    	width: 0,
-    	height: 5,
+      width: 0,
+      height: 5,
     },
     shadowOpacity: 0.34,
     shadowRadius: 6.27,

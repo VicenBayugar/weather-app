@@ -1,10 +1,10 @@
 import React from "react";
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import HomeNavigator from "./HomeNavigator";
 import FavsNavigator from "./FavsNavigator";
 import { NavigationContainer } from "@react-navigation/native";
-import { Ionicons, FontAwesome   } from "@expo/vector-icons";
+import { Ionicons } from "@expo/vector-icons";
 import { COLORS } from "../constants/colors";
 
 const BottomTabs = createBottomTabNavigator();
@@ -37,7 +37,7 @@ const TabNavigator = () => {
           options={{
             tabBarIcon: ({ focused }) => (
               <View style={styles.item}>
-                <FontAwesome name="star" size={25} color="white" />
+                <Ionicons name="star" size={25} color="white" />
               </View>
             ),
           }}

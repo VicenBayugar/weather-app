@@ -55,7 +55,7 @@ const Map = () => {
       {pickedLocation ? (
         <>
           <TouchableOpacity style={styles.boton} onPress={sendLocation}>
-            <Text style={styles.textoBoton}>Continuar</Text>
+            <Text style={styles.textoBoton}>Continue</Text>
           </TouchableOpacity>
           <MapPreview
             location={pickedLocation}
@@ -64,7 +64,7 @@ const Map = () => {
          </>        
       ) : (
         <ImageBackground source={fondo} resizeMode="cover" style={styles.image} blurRadius={3}>
-        <Text style={styles.texto}>Esperando ubicación...</Text>
+        <Text style={styles.texto}>Waiting location...</Text>
         </ImageBackground>
       )}
     </View>

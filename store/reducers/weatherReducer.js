@@ -1,4 +1,4 @@
-import { GET_WEATHER, SET_ERROR, LOAD_CITIES } from "../types";
+import { GET_WEATHER, SET_ERROR, LOAD_CITIES, DELETE_CITY } from "../types";
 
 const initialState = {
   data: null,
@@ -24,6 +24,12 @@ export default (state = initialState, action) => {
         ...state,
         favs: action.favs
       };
+    case DELETE_CITY:
+      const values = state.favs.filter( item => item.id !== action.id)
+      return {
+        ...state,
+        favs: values
+      }
     default:
       return state;
   }

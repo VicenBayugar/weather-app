@@ -3,6 +3,7 @@ import Home from "../screens/Home";
 import MapScreen from "../screens/MapScreen";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { COLORS } from "../constants/colors";
+import ChooseLocation from "../components/ChooseLocation";
 
 
 const Stack = createNativeStackNavigator();
@@ -30,6 +31,11 @@ const HomeNavigator = () => {
       <Stack.Screen
         name="Map"
         component={MapScreen}
+        options={{ title: "Map" }}
+      />
+      <Stack.Screen
+        name="ChooseLocation"
+        component={ChooseLocation}
         options={{ title: "Map" }}
       />
     </Stack.Navigator>
