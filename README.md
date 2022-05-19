@@ -3,7 +3,7 @@
 ## Description
 
 This is my project for the React Native course at CoderHouse.
-It is a weather app made with React Native, Redux and the OpenWeatherMap API.
+It is a weather app made with React Native, Redux, SQLite and the OpenWeatherMap API.
 
 ## Built with
 
@@ -11,6 +11,7 @@ It is a weather app made with React Native, Redux and the OpenWeatherMap API.
 - Expo
 - Redux
 - OpenWeatherMap
+- SQLite
 
 ## How to set it up
 

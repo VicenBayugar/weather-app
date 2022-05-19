@@ -18,7 +18,7 @@ export const getWeather = (city, onSuccess = () => {}, onError = () => {}) => {
 
       dispatch({
         type: GET_WEATHER,
-        payload: resData
+        payload: resData,
       });
       onSuccess();
     } catch (err) {
@@ -28,7 +28,12 @@ export const getWeather = (city, onSuccess = () => {}, onError = () => {}) => {
   };
 };
 
-export const getWeatherByCoord = (lat, lng, onSuccess = () => {}, onError = () => {}) => {
+export const getWeatherByCoord = (
+  lat,
+  lng,
+  onSuccess = () => {},
+  onError = () => {}
+) => {
   return async (dispatch) => {
     try {
       const res = await fetch(
@@ -62,23 +67,23 @@ const setError = (err) => {
 };
 
 export const loadCities = () => {
-  return async dispatch => {
+  return async (dispatch) => {
     try {
-      const result = await fetchCity()
-      dispatch({type: LOAD_CITIES, favs: result.rows._array})
+      const result = await fetchCity();
+      dispatch({ type: LOAD_CITIES, favs: result.rows._array });
     } catch (error) {
-      throw error
+      throw error;
     }
-  }
-}
+  };
+};
 
 export const deleteCities = (id) => {
-  return async dispatch => {
+  return async (dispatch) => {
     try {
-      const result = await deleteCity(id)
-      dispatch({type: DELETE_CITY, id})
+      const result = await deleteCity(id);
+      dispatch({ type: DELETE_CITY, id });
     } catch (error) {
-      throw error
+      throw error;
     }
-  }
-}
+  };
+};

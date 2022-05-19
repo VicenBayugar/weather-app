@@ -25,19 +25,17 @@ const ChooseLocation = () => {
     });
   };
 
-   const sendLocation = () => {
-     dispatch(getWeatherByCoord(selectedLocation.lat, selectedLocation.lng));
-     navigation.navigate("Home");
-   };
+  const sendLocation = () => {
+    dispatch(getWeatherByCoord(selectedLocation.lat, selectedLocation.lng));
+    navigation.navigate("Home");
+  };
 
   return (
-      <>
-    <View>
-      <TouchableOpacity style={styles.boton} 
-      onPress={sendLocation}
-      >
-        <Text style={styles.textoBoton}>Continue</Text>
-      </TouchableOpacity>
+    <>
+      <View>
+        <TouchableOpacity style={styles.boton} onPress={sendLocation}>
+          <Text style={styles.textoBoton}>Continue</Text>
+        </TouchableOpacity>
       </View>
       <MapView
         initialRegion={initialRegion}
@@ -54,17 +52,17 @@ const ChooseLocation = () => {
           />
         )}
       </MapView>
-      </>
+    </>
   );
 };
 
 const styles = StyleSheet.create({
-    view: {
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-        backgroundColor: COLORS.accent,
-    },
+  view: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: COLORS.accent,
+  },
   container: {
     flex: 10,
     width: "100%",

@@ -1,4 +1,4 @@
-import React, {useState } from "react";
+import React, { useState } from "react";
 import {
   View,
   StyleSheet,
@@ -6,14 +6,14 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
   ScrollView,
-  ImageBackground
+  ImageBackground,
 } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { getWeather } from "../store/actions/weatherActions";
 import Form from "../components/Form";
 import Weather from "../components/Weather";
 import { COLORS } from "../constants/colors";
-import fondo from "../assets/fondo.jpg"
+import fondo from "../assets/fondo.jpg";
 
 const Home = () => {
   const [search, setSearch] = useState("");
@@ -42,15 +42,20 @@ const Home = () => {
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <View style={styles.screen}>
-        <ImageBackground source={fondo} resizeMode="cover" style={styles.image} blurRadius={3}>
-        <ScrollView>
-          <Form
-            search={search}
-            onSetSearch={setSearch}
-            onSubmit={searchSubmitHandler}
-          />
-          <Weather loading={loading} data={data} error={error} />
-        </ScrollView>
+        <ImageBackground
+          source={fondo}
+          resizeMode="cover"
+          style={styles.image}
+          blurRadius={3}
+        >
+          <ScrollView>
+            <Form
+              search={search}
+              onSetSearch={setSearch}
+              onSubmit={searchSubmitHandler}
+            />
+            <Weather loading={loading} data={data} error={error} />
+          </ScrollView>
         </ImageBackground>
       </View>
     </TouchableWithoutFeedback>
@@ -65,7 +70,7 @@ const styles = StyleSheet.create({
   },
   image: {
     flex: 1,
-    justifyContent: "center"
+    justifyContent: "center",
   },
 });
 

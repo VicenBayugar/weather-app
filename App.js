@@ -8,11 +8,11 @@ import store from "./store";
 import { init } from "./db";
 
 init()
-  .then(() => console.log('Database initialized'))
+  .then(() => console.log("Database initialized"))
   .catch((err) => {
-    console.log('Database fail connect')
+    console.log("Database fail connect");
     console.log(err.message);
-  })
+  });
 
 export default function App() {
   const [loaded] = useFonts({

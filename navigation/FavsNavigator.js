@@ -2,7 +2,7 @@ import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { COLORS } from "../constants/colors";
 import Favourites from "../components/Favourites";
-import Item from "../components/Item"
+import Item from "../components/Item";
 
 const Stack = createNativeStackNavigator();
 

@@ -20,16 +20,16 @@ export default (state = initialState, action) => {
         error: action.payload,
       };
     case LOAD_CITIES:
-      return{
-        ...state,
-        favs: action.favs
-      };
-    case DELETE_CITY:
-      const values = state.favs.filter( item => item.id !== action.id)
       return {
         ...state,
-        favs: values
-      }
+        favs: action.favs,
+      };
+    case DELETE_CITY:
+      const values = state.favs.filter((item) => item.id !== action.id);
+      return {
+        ...state,
+        favs: values,
+      };
     default:
       return state;
   }
