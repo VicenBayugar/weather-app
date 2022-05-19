@@ -15,13 +15,9 @@ It is a weather app made with React Native, Redux, SQLite and the OpenWeatherMap
 
 ## How to set it up
 
-- Clone this repository
-- In the project directory, run: npm i
-- In the project directory, run: npm run android
-- Important: you must have android studio installed and running the emulator to initialize the app
+- Install Expo on your cell phone
+- Open this [link](https://expo.dev/@vicenbayugar/weather-app?serviceType=classic&di) and scan the Qr code
 
 ## Update
 
-This project is still in development
-
-_Last update: 05/02/2022._
+_Last update: 05/19/2022._
